@@ -29,9 +29,9 @@ int main()
 
 // <Point> 구현
 
-	// 4개의 Point를 담는 배열을 생성
+	// 4개의 Point좌표 담는 배열을 생성
 Point cordinate[4];
-	// 4개의 Point를 설정해 주는 함수 생성
+	// 4개의 Point좌표를 설정해 주는 함수 생성
 Point* setcordinate(const Point& p1, const Point& p2, const Point& p3, const Point& p4)
 {	
 	// 좌측하단좌표가 index = 0을 기준으로 하고 시계방향으로 순서대로 돌아간다.
@@ -45,7 +45,7 @@ Point* setcordinate(const Point& p1, const Point& p2, const Point& p3, const Poi
 
 // <Rectangle> 구현
 
-	// Rectangle 좌측하단좌표 p1, 우측상단좌표 p2를 받아 4개의 점을 모두 설정
+	// Rectangle 좌측하단좌표 p1, 우측상단좌표 p2를 받아 각 좌표를 이용해 4개의 점을 모두 설정
 Rectangle::Rectangle(const Point& p1, const Point& p2)
 	: Polygon(setcordinate(p1, Point(p1.getX(), p2.getY()), p2, Point(p2.getX(), p1.getY())), 4) {}
 
@@ -81,7 +81,8 @@ const Point* PointArray::get(const int pos) const
 	if (pos >= 0 && pos < size)
 		return points + pos;
 	else
-		return NULL;
+		cout << "좌표 크기 오류";
+		exit;
 }
 // get에는 <Pointarray>가 사용되었다.
 
